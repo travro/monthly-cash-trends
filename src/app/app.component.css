@@ -1,0 +1,22 @@
+header {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  min-height: 80px;
+  background-color: rgb(216, 146, 129);
+}
+
+main{
+  background-color: rgb(81, 131, 80);
+}
+
+nav {
+  background-color: #666;
+}
+.nav-list{
+  margin: 0;
+}
+
+.app-body {
+  background-color: #405;
+}
