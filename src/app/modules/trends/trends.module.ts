@@ -6,6 +6,7 @@ import { TrendsComponent } from './trends/trends.component';
   imports: [
     CommonModule
   ],
-  declarations: [TrendsComponent]
+  declarations: [TrendsComponent],
+  exports: [TrendsComponent]
 })
 export class TrendsModule { }

@@ -6,6 +6,7 @@ import { BudgetComponent } from './budget/budget.component';
   imports: [
     CommonModule
   ],
-  declarations: [BudgetComponent]
+  declarations: [BudgetComponent],
+  exports: [BudgetComponent]
 })
 export class BudgetModule { }
