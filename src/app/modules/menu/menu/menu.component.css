@@ -21,7 +21,7 @@ nav, .app-container {
 }
 
 .nav-bar {
-  background-color: rgb(114, 137, 141);
+  background-color: rgb(224, 235, 225);
 }
 
 .nav-list {
@@ -44,7 +44,7 @@ nav, .app-container {
 }
 
 .app-container {
-  background-color: #84928b;
+  background-color: rgb(177, 214, 181);
   text-align: center;
   height: 100%;
 }

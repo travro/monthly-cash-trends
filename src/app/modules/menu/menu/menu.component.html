@@ -3,14 +3,14 @@
 <main>
   <nav class="nav-bar">
     <ul class="nav-list">
-      <li class="nav-link">Home</li>
-      <li class="nav-link">Budget</li>
-      <li class="nav-link">Transactions</li>
-      <li class="nav-link">Trends</li>
+      <li class="nav-link" [routerLink]="['/budget']">Budget</li>
+      <li class="nav-link" [routerLink]="['/transactions']">Transactions</li>
+      <li class="nav-link" [routerLink]="['/trends']">Trends</li>
     </ul>
   </nav>
   <div class="app-container">
     <!--place router outlet here-->
+    <router-outlet></router-outlet>
   </div>
 </main>
 <footer class="footer grn-bg">
