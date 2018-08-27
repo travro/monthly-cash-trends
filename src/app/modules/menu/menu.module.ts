@@ -20,7 +20,6 @@ import { TrendsModule } from '../trends/trends.module';
     TrendsModule,
     CommonModule,
     RouterModule.forChild([
-      //will require a 'canActivate' guard
       { path: 'budget', component: BudgetComponent },
       { path: 'transactions', component: TransactionsComponent },
       { path: 'trends', component: TrendsComponent }
