@@ -1,3 +1,19 @@
-<p>
-  transactions works!
-</p>
+<table>
+  <tr *ngFor = "let t of transactions">
+    <td>
+      {{t.id}}
+    </td>
+    <td>
+      {{t.date}}
+    </td>
+    <td>
+      {{t.description}}
+    </td>
+    <td>
+      {{t.amt}}
+    </td>
+    <td>
+      {{t.category}}
+    </td>
+  </tr>
+</table>>

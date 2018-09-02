@@ -3,8 +3,8 @@ export class Transaction{
     public id: number,
     public date: Date,
     public description: string,
-    public category: string,
-    public amt: number
+    public amt: number,
+    public category?: string,
   ){}
 
 }
