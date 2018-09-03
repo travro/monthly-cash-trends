@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {RestDataService } from '../../services/restdata.service';
 import { Transaction } from '../../models/transaction.model';
+import { TransactionRepositoryService } from '../../services/transaction-repository.service';
 
 @Component({
   selector: 'app-transactions',
@@ -10,15 +10,27 @@ import { Transaction } from '../../models/transaction.model';
 
 export class TransactionsComponent implements OnInit {
 
-  public transactions: Transaction[];
+  private transactions: Transaction[];
+  private sortParam: number = 0;
 
-  constructor(private dataservice: RestDataService) { }
 
-  ngOnInit() {
-    this.dataservice.getAllTransactions().subscribe(
-      (data) =>{ this.transactions = data},
-      (error) => console.log(error),
-      () => console.log('got it'));
+  constructor(private repo: TransactionRepositoryService) {
+    this.transactions = this.repo.getAllTransactions();
   }
 
+  ngOnInit() {
+
+  }
+
+  get trans(): Transaction[] {
+    return this.transactions;
+  }
+
+  deleteTrans(id: number) {
+    this.repo.deleteTransaction(id);
+  }
+
+
 }
+
+

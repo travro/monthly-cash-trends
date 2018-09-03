@@ -1,26 +1,34 @@
 <table>
-  <tr>
-    <td></td>
-    <td>Date/Time</td>
-    <td>Vendor</td>
-    <td>Category</td>
-    <td>Amount</td>
-  </tr>
-  <tr *ngFor = "let t of transactions">
-    <td>
-      {{t.id}}
-    </td>
-    <td>
-      {{t.date}}
-    </td>
-    <td>
-      {{t.vendor}}
-    </td>
-    <td>
-      {{t.category}}
-    </td>
-    <td>
-      {{t.amt}}
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <td>ID</td>
+      <td>Date/Time</td>
+      <td>Vendor</td>
+      <td>Category</td>
+      <td>Amount</td>
+      <td>Options</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let t of trans">
+      <td>
+        {{t.id}}
+      </td>
+      <td>
+        {{t.date}}
+      </td>
+      <td>
+        {{t.vendor}}
+      </td>
+      <td>
+        <input type="text" placeholder="category here" />
+      </td>
+      <td>
+        {{t.amt}}
+      </td>
+      <td>
+        <button (click)="deleteTrans(t.id)">x</button>
+      </td>
+    </tr>
+  </tbody>
 </table>

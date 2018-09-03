@@ -4,7 +4,6 @@ export class Transaction{
     public date: Date,
     public vendor: string,
     public amt: number,
-    public category?: string,
   ){}
 
 
