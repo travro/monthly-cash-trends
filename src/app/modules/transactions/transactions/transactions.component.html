@@ -1,4 +1,11 @@
 <table>
+  <tr>
+    <td></td>
+    <td>Date/Time</td>
+    <td>Vendor</td>
+    <td>Category</td>
+    <td>Amount</td>
+  </tr>
   <tr *ngFor = "let t of transactions">
     <td>
       {{t.id}}
@@ -7,13 +14,13 @@
       {{t.date}}
     </td>
     <td>
-      {{t.description}}
-    </td>
-    <td>
-      {{t.amt}}
+      {{t.vendor}}
     </td>
     <td>
       {{t.category}}
     </td>
+    <td>
+      {{t.amt}}
+    </td>
   </tr>
-</table>>
+</table>

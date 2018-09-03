@@ -7,14 +7,17 @@ import { Transaction } from '../../models/transaction.model';
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.css']
 })
+
 export class TransactionsComponent implements OnInit {
 
-  constructor(private dataservice: RestDataService, private transactions: Transaction[]) { }
+  public transactions: Transaction[];
+
+  constructor(private dataservice: RestDataService) { }
 
   ngOnInit() {
     this.dataservice.getAllTransactions().subscribe(
-      (data) => this.transactions = data,
-      () => console.log('there was an error'),
+      (data) =>{ this.transactions = data},
+      (error) => console.log(error),
       () => console.log('got it'));
   }
 

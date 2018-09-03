@@ -13,6 +13,7 @@ import { MenuComponent } from './modules/menu/menu/menu.component';
 import { BudgetComponent } from './modules/budget/budget/budget.component';
 import { TransactionsComponent } from './modules/transactions/transactions/transactions.component';
 import { TrendsComponent } from './modules/trends/trends/trends.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { TrendsComponent } from './modules/trends/trends/trends.component';
     LandingModule,
     LoginModule,
     MenuModule,
+    HttpClientModule,
     //product routes are configured after 'imported' feater routes
     RouterModule.forRoot([
       { path: 'home', component: LandingComponent },
