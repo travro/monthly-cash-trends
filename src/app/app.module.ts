@@ -32,10 +32,11 @@ import { HttpClientModule } from '@angular/common/http';
       {
         path: 'menu', component: MenuComponent,
         children: [
-          { path: '', redirectTo: 'budget', pathMatch: 'full'},
           { path: 'budget', component: BudgetComponent },
           { path: 'transactions', component: TransactionsComponent },
-          { path: 'trends', component: TrendsComponent }
+          { path: 'trends', component: TrendsComponent },
+          { path: '', redirectTo: 'budget', pathMatch: 'full' },
+          { path: '**', redirectTo: 'budget' }
         ]
       },
       { path: '', redirectTo: 'home', pathMatch: 'full' },

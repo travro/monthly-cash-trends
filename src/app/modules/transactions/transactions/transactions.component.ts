@@ -26,10 +26,6 @@ export class TransactionsComponent implements OnInit {
     return this.transactions;
   }
 
-  deleteTrans(id: number) {
-    this.repo.deleteTransaction(id);
-  }
-
 
 }
 
