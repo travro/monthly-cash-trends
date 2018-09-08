@@ -15,19 +15,11 @@ export class TransactionRepositoryService {
     this.dataservice.getAllTransactions().subscribe(
       (data) => { this.transactions = data },
       (error) => console.log(error),
-      () => console.log('got it'));
+      () => console.log('Transactions received'));
   }
 
   getAllTransactions(): Transaction[]{
     return this.transactions;
   }
 
-  deleteTransaction(id: number){
-    this.dataservice.deleteTransactions(id).subscribe(
-      (data : Transaction) => {
-        console.log(data.vendor + 'was deleted')
-        this.transactions.splice(this.transactions.findIndex(i => i.id == data.id), 1);
-      }
-    );
-  }
 }

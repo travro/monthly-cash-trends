@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs'
-import {map} from 'rxjs/operators'
+import { map } from 'rxjs/operators'
 
 //
 import { Transaction } from '../models/transaction.model';
@@ -23,12 +23,14 @@ export class DataService {
     return this.http.get<Transaction[]>(this.baseUrl);
 
   }
-
+  /*
+  *Transactions shouls be read only
+  *
   deleteTransactions(id: number): Observable<any>{
     return this.http.delete(this.baseUrl + `${id}`);
   }
+  */
 
-  /**/
 }
 
 
