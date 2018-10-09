@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs'
-import { map } from 'rxjs/operators'
 
 //
 import { Transaction } from '../models/transaction.model';
@@ -14,8 +13,9 @@ import { Transaction } from '../models/transaction.model';
 
 
 export class DataService {
-
-  baseUrl: string = 'https://5b82c6892fd7f2001417916a.mockapi.io/mock/';
+  //https://5b82c6892fd7f2001417916a.mockapi.io/mock
+  //
+  baseUrl: string = 'http://localhost:3500/';
 
   constructor(private http: HttpClient) { }
 
@@ -23,6 +23,8 @@ export class DataService {
     return this.http.get<Transaction[]>(this.baseUrl);
 
   }
+
+}
   /*
   *Transactions shouls be read only
   *
@@ -31,7 +33,7 @@ export class DataService {
   }
   */
 
-}
+
 
 
 
