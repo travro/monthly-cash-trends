@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "json": "json-server --watch categories.json"
+    "server": "node src/app/server/server.js"
   },
   "private": true,
   "dependencies": {
