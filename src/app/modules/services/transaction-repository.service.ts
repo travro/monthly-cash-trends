@@ -13,9 +13,9 @@ export class TransactionRepositoryService {
 
   constructor(private dataservice: DataService) {
     this.dataservice.getAllTransactions().subscribe(
-      (data) => { this.transactions = data },
+      (data) => { this.transactions = data; console.log('Transactions Received') },
       (error) => console.log(error),
-      () => console.log('Transactions received'));
+      () => console.log('Repo GET request ended'));
   }
 
   getAllTransactions(): Transaction[]{
