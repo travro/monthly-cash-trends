@@ -3,7 +3,7 @@ export class Transaction{
     public id: number,
     public date: Date,
     public vendor: string,
-    public amt: number,
+    public amount: number,
     public category?: string
   ){}
 
