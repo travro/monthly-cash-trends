@@ -1,5 +1,6 @@
-table td, th{
+table td, table th{
   width: 150px;
+  min-height: 50px;
 }
 table, td{
   border : 1px solid black;
