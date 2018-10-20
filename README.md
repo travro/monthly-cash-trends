@@ -3,7 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.4.
 ## Node Web Server
 
-Run `npm run server` to run the node server. Using the Express router, Node will connect to a MySQL. MCT uses the following MySQL Schema:
+Run `npm run server` to run the node server. Using the Express router, Node will connect to a MySQL database. MCT uses the following MySQL Schema:
 ![MCT Database](src/assets/mct_schema.png)
 
 ## Development server
