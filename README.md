@@ -3,7 +3,8 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.4.
 ## Node Web Server
 
-Run `npm run server` to create a node server, upon request the server will make a call to mockapi.io and return a JSON string
+Run `npm run server` to run the node server. Using the Express router, Node will connect to sequel database. MCT uses the following MySQL Schema:
+![MCT Database](src/assets/mct_schema.png)
 
 ## Development server
 
