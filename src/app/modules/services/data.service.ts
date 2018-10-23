@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs'
 //
 import { Transaction } from '../models/transaction.model';
+import { Category } from '../models/category.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,10 @@ export class DataService {
 
   getAllTransactions(): Observable<Transaction[]> {
     return this.http.get<Transaction[]>(this.baseUrl);
+  }
+
+  getAllCategories(): Observable<Category[]>{
+    return this.http.get<Category[]>(this.baseUrl + 'categories');
   }
 
 }

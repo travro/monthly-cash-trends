@@ -32,9 +32,9 @@ export class TransactionsComponent implements OnInit {
   }
 
   openCategorizerDialog(): void {
-    let dialogConfig = new MatDialogConfig();
 
-    dialogConfig.width = '400px';
+    let dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '480px';
     dialogConfig.height = '600px';
     dialogConfig.data = { name: "Good job Travis" };
 

@@ -25,4 +25,8 @@ export class CategorizerComponent implements OnInit {
     this.dialogRef.close(this.data);
   }
 
+  get cats(): string[]{
+    return this.repo.getAllCategories();
+  }
+
 }
