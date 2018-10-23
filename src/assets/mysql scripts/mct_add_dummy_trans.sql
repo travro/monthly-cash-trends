@@ -1,12 +1,28 @@
 use mct;
 
-insert into transactions (dt, vendor, amount) values 
-(curdate(), 'DummyVendor1', 3.45),
-(curdate(), 'DummyVendor2', 11.47),
-(curdate(), 'DummyVendor3', 73.22),
-(curdate(), 'DummyVendor4', 199.27),
-(curdate(), 'DummyVendor5', 34.56),
-(curdate(), 'DummyVendor6', 18.99),
-(curdate(), 'DummyVendor7', 1.45),
-(curdate(), 'DummyVendor8', 2.41)
+insert into transactions (dt, vendor, amount) values
+(curdate(), 'DummyVendor1', Rand()*100 + Rand()),
+(curdate(), 'DummyVendor2', Rand()*100 + Rand()),
+(curdate(), 'DummyVendor3', Rand()*100 + Rand()),
+(curdate(), 'DummyVendor4', Rand()*100 + Rand()),
+(curdate(), 'DummyVendor5', Rand()*100 + Rand()),
+(curdate(), 'DummyVendor6', Rand()*100 + Rand()),
+(curdate(), 'DummyVendor7', Rand()*100 + Rand()),
+(curdate(), 'DummyVendor8', Rand()*100 + Rand()),
+(curdate(), 'DummyVendor1', Rand()*100 + Rand()),
+(curdate(), 'DummyVendor2', Rand()*100 + Rand()),
+(curdate(), 'DummyVendor3', Rand()*100 + Rand()),
+(curdate(), 'DummyVendor4', Rand()*100 + Rand()),
+(curdate(), 'DummyVendor5', Rand()*100 + Rand()),
+(curdate(), 'DummyVendor6', Rand()*100 + Rand()),
+(curdate(), 'DummyVendor7', Rand()*100 + Rand()),
+(curdate(), 'DummyVendor8', Rand()*100 + Rand()),
+(curdate(), 'DummyVendor1', Rand()*100 + Rand()),
+(curdate(), 'DummyVendor2', Rand()*100 + Rand()),
+(curdate(), 'DummyVendor3', Rand()*100 + Rand()),
+(curdate(), 'DummyVendor4', Rand()*100 + Rand()),
+(curdate(), 'DummyVendor5', Rand()*100 + Rand()),
+(curdate(), 'DummyVendor6', Rand()*100 + Rand()),
+(curdate(), 'DummyVendor7', Rand()*100 + Rand()),
+(curdate(), 'DummyVendor8', Rand()*100 + Rand())
 ;
