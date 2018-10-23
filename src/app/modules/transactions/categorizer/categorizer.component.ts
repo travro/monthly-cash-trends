@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
 import { TransactionRepositoryService } from '../../services/transaction-repository.service';
 import { Transaction } from '../../models/transaction.model';
 
@@ -9,13 +11,18 @@ import { Transaction } from '../../models/transaction.model';
 })
 export class CategorizerComponent implements OnInit {
 
-  constructor(private repo: TransactionRepositoryService) { }
-
-  @Input() t: Transaction;
-
+  //MatDialogRef contains a dialog reference to the component in the dialog
+  //MAT_DIALOG_DATA holds the data passed in by MatDialogConfig, which was injected in the parent (transactions.component.ts)
+  constructor(private repo: TransactionRepositoryService,
+    private dialogRef: MatDialogRef<CategorizerComponent>, @Inject(MAT_DIALOG_DATA) public data) { }
 
 
   ngOnInit() {
+  }
+
+  //Closes the dialog box and sends back the data that was originally injected
+  close(): void {
+    this.dialogRef.close(this.data);
   }
 
 }

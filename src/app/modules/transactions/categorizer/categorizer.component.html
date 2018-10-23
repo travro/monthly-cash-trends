@@ -1,1 +1,33 @@
-<button class="btn-categorizer">{{t.category}}</button>
+<h3>
+  (This Vendor) is categorized as (This Category)
+</h3>
+<div class="categorizer-main">
+  <main class="categorizer-menu">
+    <h4>Category Options</h4>
+    <button>Add Category </button>
+    <button disabled>Remove Selected</button>
+    <button disabled>Rename Selected</button>
+    <input type="checkbox" name="apply-all">
+    <label for="apply-all">Apply this category to all vendors</label>
+
+  </main>
+  <aside class="category-list">
+    <ul>
+      <li>Category 1</li>
+      <li>Category 2</li>
+      <li>Category 3</li>
+      <li>Category 4</li>
+      <li>Category 5</li>
+      <li>Category 6</li>
+      <li>Category 7</li>
+      <li>Category 8</li>
+      <li>Category 9</li>
+      <li>Category 10</li>
+      <li>Category 11</li>
+      <li>Category 12</li>
+      <li>Category 13</li>
+    </ul>
+  </aside>
+</div>
+<button (click)="close()">Cancel</button>
+<button (click)="close()">Apply</button>

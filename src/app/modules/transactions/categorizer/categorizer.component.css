@@ -1,0 +1,30 @@
+.categorizer-main{
+  height: 380px;
+}
+.categorizer-main button{
+  display: block;
+    width: 175px;
+}
+.categorizer-menu{
+  width: 48%;
+  float: left;
+  height: 300px;
+}
+.category-list{
+  width: 48%;
+  float: right;
+  height: 300px;
+  overflow-y: scroll;
+}
+ul{
+  list-style-type: none;
+}
+label{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.7em;
+  font-style: italic;
+}
+button{
+  margin: 5px;
+}
+

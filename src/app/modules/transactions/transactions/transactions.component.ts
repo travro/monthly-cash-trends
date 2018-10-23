@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+
 import { Transaction } from '../../models/transaction.model';
 import { TransactionRepositoryService } from '../../services/transaction-repository.service';
+import { CategorizerComponent } from '../categorizer/categorizer.component';
+
 
 @Component({
   selector: 'app-transactions',
@@ -11,10 +15,11 @@ import { TransactionRepositoryService } from '../../services/transaction-reposit
 export class TransactionsComponent implements OnInit {
 
   private transactions: Transaction[];
-  private sortParam: number = 0;
 
-
-  constructor(private repo: TransactionRepositoryService) {
+  //MatDialog is the service that opens the dialog component (categorizer.component.ts) on behalf of this component
+  constructor(
+    private repo: TransactionRepositoryService,
+    private dialogService: MatDialog) {
     this.transactions = this.repo.getAllTransactions();
   }
 
@@ -24,6 +29,20 @@ export class TransactionsComponent implements OnInit {
 
   get trans(): Transaction[] {
     return this.transactions;
+  }
+
+  openCategorizerDialog(): void {
+    let dialogConfig = new MatDialogConfig();
+
+    dialogConfig.width = '400px';
+    dialogConfig.height = '600px';
+    dialogConfig.data = { name: "Good job Travis" };
+
+    let dialogRef = this.dialogService.open(CategorizerComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe((result) =>{
+      console.log(result);
+    })
   }
 
 

@@ -21,7 +21,7 @@
         {{t.vendor}}
       </td>
       <td>
-        <app-categorizer [t]="t"></app-categorizer>
+        <button (click)="openCategorizerDialog()">{{t.category}}</button>
       </td>
       <td>
         {{t.amount}}
