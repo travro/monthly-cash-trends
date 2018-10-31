@@ -1,11 +1,9 @@
 const express = require('express');
 //const chalk = require('chalk');
 //const debug = require('debug')('app');
-//const morgan = require('morgan');
 const router = require('./router');
 //everything works through app
 const app = express();
-//app.use(morgan('tiny'));
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs'
 //
 import { Transaction } from '../models/transaction.model';
@@ -24,9 +24,23 @@ export class DataService {
     return this.http.get<Category[]>(this.baseUrl + 'categories');
   }
 
+  /**
+   *
+   * @param newCat
+   *
+   *
+   */
+  insertNewCategory(newCat: string): Observable<Category>{
+    return this.http.post<Category>(this.baseUrl + `categories/${newCat}`, newCat, {
+      headers: new HttpHeaders({
+        'Content-Type':'text/plain'
+      })
+    })
+  }
+
 }
   /*
-  *Transactions shouls be read only
+  *Transactions should be read only
   *
   deleteTransactions(id: number): Observable<any>{
     return this.http.delete(this.baseUrl + `${id}`);

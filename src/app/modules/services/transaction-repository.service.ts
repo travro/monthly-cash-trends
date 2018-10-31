@@ -37,5 +37,10 @@ export class TransactionRepositoryService {
     let catsToString: string[] = this.categories.map((c) => c.category );
     return catsToString;
   }
+  insertNewCategory(c:string){
+    this.dataservice.insertNewCategory(c).subscribe(
+      (c)=> this.categories.push(c),
+      (err) => console.log(err));
+  }
 
 }
