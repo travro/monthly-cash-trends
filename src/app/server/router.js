@@ -18,25 +18,26 @@ router.route('/')
 
 router.route('/categories')
   .get((req, res) => {
-      database.query('CALL GetAllCategories()', (err, results, fields) => {
-        if(err) console.log('GET categories error: ' + err);
-        console.log(results);
-        res.send(results[0]);
-      })
+    database.query('CALL GetAllCategories()', (err, results, fields) => {
+      if (err) console.log('GET_Categories error: ' + err);
+      console.log(results);
+      res.send(results[0]);
+    })
   });
 
-  /**
-   *Does not work!!
-   *
-   */
 router.route('/categories/:newCat')
-  .post((req, res) =>{
-    database.query(`CALL InsertCategory('${req.body}')`, (err)=>{
-      if(err) console.log('POST category error: ' + err);
+  .post((req, res) => {
+    database.query(`CALL InsertCategory('${req.body}')`, (err) => {
+      if (err) console.log('POST_Category error: ' + err);
     })
-  }
+  });
 
-
-);
+router.route('/categories/:id')
+  .delete((req, res) => {
+    //console.log("This is the body" + JSON.stringify(req.body));
+    database.query(`CALL DeleteCategory(${req.body})`, (err) => {
+      if (err) console.log('DELETE_Category error: ' + err);
+    })
+  });
 
 module.exports = router;

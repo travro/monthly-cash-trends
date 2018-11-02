@@ -34,13 +34,19 @@ export class TransactionRepositoryService {
   }
 
   getAllCategories(): string[] {
-    let catsToString: string[] = this.categories.map((c) => c.category );
+    let catsToString: string[] = this.categories.map((c) => c.category);
     return catsToString;
   }
-  insertNewCategory(c:string){
+  insertNewCategory(c: string) {
     this.dataservice.insertNewCategory(c).subscribe(
-      (c)=> this.categories.push(c),
+      (c) => this.categories.push(c),
       (err) => console.log(err));
+  }
+  deleteCategory(c: string) {
+    let catToDelete = this.categories.find((cat) => cat.category == c);
+    this.dataservice.deleteCategory(catToDelete.id).subscribe((category) => {
+      this.categories.splice(this.categories.findIndex((i) => i.id == category.id), 1)
+    });
   }
 
 }

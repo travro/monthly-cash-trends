@@ -22,7 +22,6 @@ export class CategorizerComponent implements OnInit {
     return this.repo.getAllCategories();
   }
   /**
-   *
    *Insert new category via classic Js prompts with Js REGEX
    */
   insertNewCategory(): void{
@@ -33,6 +32,13 @@ export class CategorizerComponent implements OnInit {
     else{
       alert('The new category can contain only letters');
     }
+  }
+  /**
+   *
+   * @param c
+   */
+  removeSelectedCategory(c :string): void{
+    this.repo.deleteCategory(c);
   }
 
   //Closes the dialog box and sends back the data that was originally injected

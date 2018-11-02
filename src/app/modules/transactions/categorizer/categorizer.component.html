@@ -1,21 +1,23 @@
-<h3>
-  (This Vendor) is categorized as (This Category)
-</h3>
-<div class="categorizer-main">
-  <main class="categorizer-menu">
-    <h4>Category Options</h4>
-    <button (click)="insertNewCategory()">Add Category </button>
-    <button disabled>Remove Selected</button>
-    <button disabled>Rename Selected</button>
-    <input type="checkbox" name="apply-all">
-    <label for="apply-all">Apply this category to all transactions with this vendor</label>
+  <h3>
+    (This Vendor) is categorized as (This Category)
+  </h3>
+  <div class="categorizer-main">
+    <main class="categorizer-menu">
+      <h4>Category Options</h4>
+      <button (click)="insertNewCategory()">Add Category </button>
+      <button (click)="removeSelectedCategory('Gas')">Remove Selected</button>
+      <button disabled>Rename Selected</button>
+      <input type="checkbox" name="apply-all">
+      <label for="apply-all">Apply this category to all transactions with this vendor</label>
 
-  </main>
-  <aside class="category-list">
-    <ul>
-      <li *ngFor="let cat of cats">{{cat}}</li>
-    </ul>
-  </aside>
-</div>
-<button (click)="close()">Cancel</button>
-<button (click)="close()">Apply</button>
+    </main>
+    <aside  class="category-list">
+      <select #catlist size="15">
+        <option *ngFor="let cat of cats">{{cat}}</option>
+      </select>
+    </aside>
+  </div>
+  <button (click)="close()">Cancel</button>
+  <button (click)="close()">Apply</button>
+  {{catlist.size || 'None'}}
+

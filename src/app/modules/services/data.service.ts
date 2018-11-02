@@ -20,7 +20,7 @@ export class DataService {
     return this.http.get<Transaction[]>(this.baseUrl);
   }
 
-  getAllCategories(): Observable<Category[]>{
+  getAllCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(this.baseUrl + 'categories');
   }
 
@@ -30,12 +30,16 @@ export class DataService {
    *
    *
    */
-  insertNewCategory(newCat: string): Observable<Category>{
+  insertNewCategory(newCat: string): Observable<Category> {
     return this.http.post<Category>(this.baseUrl + `categories/${newCat}`, newCat, {
       headers: new HttpHeaders({
-        'Content-Type':'text/plain'
+        'Content-Type': 'text/plain'
       })
     })
+  }
+
+  deleteCategory(id: number): Observable<Category> {
+    return this.http.delete<Category>(this.baseUrl + `categories/${id}`);
   }
 
 }

@@ -14,7 +14,9 @@
   width: 48%;
   float: right;
   height: 300px;
-  overflow-y: scroll;
+}
+.category-list select{
+  width: 98%;
 }
 ul{
   list-style-type: none;
