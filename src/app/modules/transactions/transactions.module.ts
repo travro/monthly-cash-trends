@@ -1,6 +1,7 @@
 //Imports
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule} from '@angular/material';
 
@@ -12,7 +13,8 @@ import { CategorizerComponent } from './categorizer/categorizer.component';
   imports: [
     CommonModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule
   ],
   declarations: [TransactionsComponent, CategorizerComponent],
   exports: [TransactionsComponent],

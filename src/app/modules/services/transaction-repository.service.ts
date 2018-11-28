@@ -24,7 +24,7 @@ export class TransactionRepositoryService {
     this.dataservice.getAllCategories().subscribe(
       (cats) => {
         this.categories = cats;
-        console.log('Categories Received')
+        console.log('Categories Received');
       },
       (error) => console.log(error));
   }
@@ -37,14 +37,16 @@ export class TransactionRepositoryService {
     let catsToString: string[] = this.categories.map((c) => c.category);
     return catsToString;
   }
+
   insertNewCategory(c: string) {
     this.dataservice.insertNewCategory(c).subscribe(
       (c) => this.categories.push(c),
       (err) => console.log(err));
   }
-  deleteCategory(c: string) {
-    let catToDelete = this.categories.find((cat) => cat.category == c);
-    this.dataservice.deleteCategory(catToDelete.id).subscribe((category) => {
+
+  deleteCategory(categoryName: string) {
+    let categoryToDelete: Category = this.categories.find((index) => index.category == categoryName);
+    this.dataservice.deleteCategory(categoryToDelete.id).subscribe((category) => {
       this.categories.splice(this.categories.findIndex((i) => i.id == category.id), 1)
     });
   }

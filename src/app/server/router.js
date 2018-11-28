@@ -34,8 +34,8 @@ router.route('/categories/:newCat')
 
 router.route('/categories/:id')
   .delete((req, res) => {
-    //console.log("This is the body" + JSON.stringify(req.body));
-    database.query(`CALL DeleteCategory(${req.body})`, (err) => {
+    console.log("This is the body of the request:" + JSON.stringify(req.params.id));
+    database.query(`CALL DeleteCategory(${req.params.id})`, (err) => {
       if (err) console.log('DELETE_Category error: ' + err);
     })
   });
