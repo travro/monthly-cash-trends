@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 
 import { Transaction } from '../../models/transaction.model';
-import { TransactionRepositoryService } from '../../services/transaction-repository.service';
 import { CategorizerComponent } from '../categorizer/categorizer.component';
+import { DataService } from '../../services/data.service';
 
 
 @Component({
@@ -18,9 +18,11 @@ export class TransactionsComponent implements OnInit {
 
   //MatDialog is the service that opens the dialog component (categorizer.component.ts) on behalf of this component
   constructor(
-    private repo: TransactionRepositoryService,
+    private rest: DataService,
     private dialogService: MatDialog) {
-    this.transactions = this.repo.getAllTransactions();
+    this.rest.getAllTransactions().subscribe(
+      (data) => this.transactions = data
+    );
   }
 
   ngOnInit() {

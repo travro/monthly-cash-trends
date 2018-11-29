@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { DataService } from './data.service';
 import { Transaction } from '../models/transaction.model';
 import { Category } from '../models/category.model';
+import { Observable, from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -29,12 +30,16 @@ export class TransactionRepositoryService {
       (error) => console.log(error));
   }
 
-  getAllTransactions(): Transaction[] {
-    return this.transactions;
+  getAllTransactions(): Observable<Transaction[]> {
+    return from([this.transactions]);
   }
 
-  getAllCategories(): Category[] {
-    return this.categories;
+  /**
+   * If reinstating this class remember to subscribe the categorizer component to
+   * this data
+   */
+  getAllCategories(): Observable<Category[]> {
+    return from([this.categories]);
   }
 
   insertNewCategory(c: string) {

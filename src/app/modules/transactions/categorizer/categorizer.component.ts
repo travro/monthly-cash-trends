@@ -1,9 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
-import { TransactionRepositoryService } from '../../services/transaction-repository.service';
-import { Transaction } from '../../models/transaction.model';
+import { DataService } from '../../services/data.service';
 import { Category } from '../../models/category.model';
+
 
 @Component({
   selector: 'app-categorizer',
@@ -12,37 +12,56 @@ import { Category } from '../../models/category.model';
 })
 export class CategorizerComponent implements OnInit {
 
-  selectedCategory : string;
+  private categories: Category[];
+  public selectedCategory: string;
+
   //MatDialogRef contains a dialog reference to the component in the dialog
   //MAT_DIALOG_DATA holds the data passed in by MatDialogConfig, which was injected in the parent (transactions.component.ts)
   constructor(
-    private repo: TransactionRepositoryService,
+    private rest: DataService,
     private dialogRef: MatDialogRef<CategorizerComponent>,
-    @Inject(MAT_DIALOG_DATA) public data) { }
+    @Inject(MAT_DIALOG_DATA) public data) {
 
-  ngOnInit() {
+    this.rest.getAllCategories().subscribe(
+      (cats) => { this.categories = cats }
+    );
+
   }
 
-  get cats(): Category[]{
-    return this.repo.getAllCategories();
+  ngOnInit() { }
+
+  get cats(): Category[] {
+    return this.categories;
   }
   /**
    *Insert new category via classic Js prompts with Js REGEX
    */
-  insertNewCategory(): void{
-    let cat = prompt("Insert the name of the new category (Letters only)");
-    if(/^[a-zA-Z]+$/.test(cat) && cat !== ''){
-      this.repo.insertNewCategory(cat);
+  insertNewCategory(): void {
+    let newCat = prompt("Insert the name of the new category (Letters only)");
+    if (/^[a-zA-Z]+$/.test(newCat) && newCat !== '') {
+      this.rest.insertNewCategory(newCat).subscribe(
+        (cat) => {
+          this.categories.push(cat);
+        },
+        (err) => {
+          console.log("Categorizer insert error: " + err);
+        });
     }
-    else{
+    else {
       alert('You must enter a category containing only letters');
     }
   }
   /**
-   *
+   *Removing a category from list of categories
    */
-  removeSelectedCategory(): void{
-    this.repo.deleteCategory(this.selectedCategory);
+  removeSelectedCategory(): void {
+    let catToRemove: Category = this.categories.find((cat) => cat.category == this.selectedCategory);
+
+    if (confirm(`Are you sure you wish to remove the selected category: ${this.selectedCategory}?`)) {
+      this.rest.deleteCategory(catToRemove.id).subscribe((c) => {
+        this.categories.splice(this.categories.findIndex((i) => i.id == c.id), 1)
+      });
+    }
   }
 
   //Closes the dialog box and sends back the data that was originally injected
