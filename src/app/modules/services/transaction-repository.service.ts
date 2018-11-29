@@ -33,9 +33,8 @@ export class TransactionRepositoryService {
     return this.transactions;
   }
 
-  getAllCategories(): string[] {
-    let catsToString: string[] = this.categories.map((c) => c.category);
-    return catsToString;
+  getAllCategories(): Category[] {
+    return this.categories;
   }
 
   insertNewCategory(c: string) {

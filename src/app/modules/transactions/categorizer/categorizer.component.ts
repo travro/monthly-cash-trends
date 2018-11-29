@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { TransactionRepositoryService } from '../../services/transaction-repository.service';
 import { Transaction } from '../../models/transaction.model';
+import { Category } from '../../models/category.model';
 
 @Component({
   selector: 'app-categorizer',
@@ -22,7 +23,7 @@ export class CategorizerComponent implements OnInit {
   ngOnInit() {
   }
 
-  get cats(): string[]{
+  get cats(): Category[]{
     return this.repo.getAllCategories();
   }
   /**
