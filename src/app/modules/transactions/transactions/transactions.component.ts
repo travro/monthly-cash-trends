@@ -35,6 +35,7 @@ export class TransactionsComponent implements OnInit {
 
   openCategorizerDialog(trans: Transaction): void {
 
+    let originalCategory: string = trans.category;
     let dialogConfig = new MatDialogConfig();
     dialogConfig.width = '480px';
     dialogConfig.height = '600px';
@@ -42,12 +43,21 @@ export class TransactionsComponent implements OnInit {
 
     let dialogRef = this.dialogService.open(CategorizerComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe((result) =>{
-      console.log(result);
+    //
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('Dialogue close results: ' + result.category);
+
+      //check for change in the category of the transaction, if true call update
+      if (originalCategory != result.category) {
+        this.rest.updateTransaction(trans.id, result.category).subscribe((t) => {
+          this.transactions.find(tran => tran.id == t.id).category == result.category;
+        });
+      }
     })
+
+
+
   }
-
-
 }
 
 

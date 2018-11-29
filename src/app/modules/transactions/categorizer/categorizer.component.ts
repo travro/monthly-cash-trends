@@ -58,19 +58,29 @@ export class CategorizerComponent implements OnInit {
   removeSelectedCategory(): void {
     let catToRemove: Category = this.categories.find((cat) => cat.category == this.selectedCategory);
 
-    if (confirm(`Are you sure you wish to remove the selected category: ${this.selectedCategory}?`)) {
+    if (confirm(`Remove the selected category: ${this.selectedCategory}?`)) {
       this.rest.deleteCategory(catToRemove.id).subscribe((c) => {
         this.categories.splice(this.categories.findIndex((i) => i.id == c.id), 1)
       },
-      (err) => {
-        if(err) console.log("Categorizer delete error: " + err);
-      }
+        (err) => {
+          if (err) console.log("Categorizer delete error: " + err);
+        }
       );
     }
   }
 
-  //Closes the dialog box and sends back the data that was originally injected
-  close(): void {
+  //Closes the dialog box and sends back the data that was originally injected with no changes
+  closeNoChanges(): void {
     this.dialogRef.close(this.data);
+    this.selectedCategory = null;
+  }
+
+  //Closes the dialog box with changes to the transaction's category
+  applyChanges(): void {
+    if (confirm(`Apply the category ${this.selectedCategory} to ${this.data.vendor}?`)) {
+      this.data.category = this.selectedCategory;
+      this.dialogRef.close(this.data);
+      this.selectedCategory = null;
+    }
   }
 }
