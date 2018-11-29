@@ -35,7 +35,7 @@ export class CategorizerComponent implements OnInit {
       this.repo.insertNewCategory(cat);
     }
     else{
-      alert('The new category can contain only letters');
+      alert('You must enter a category containing only letters');
     }
   }
   /**
