@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { DataService } from '../../services/data.service';
+import { Transaction } from '../../models/transaction.model';
 import { Category } from '../../models/category.model';
 
 
@@ -44,7 +45,7 @@ export class CategorizerComponent implements OnInit {
           this.categories.push(cat);
         },
         (err) => {
-          console.log("Categorizer insert error: " + err);
+          if (err) console.log("Categorizer insert error: " + err);
         });
     }
     else {
@@ -60,7 +61,11 @@ export class CategorizerComponent implements OnInit {
     if (confirm(`Are you sure you wish to remove the selected category: ${this.selectedCategory}?`)) {
       this.rest.deleteCategory(catToRemove.id).subscribe((c) => {
         this.categories.splice(this.categories.findIndex((i) => i.id == c.id), 1)
-      });
+      },
+      (err) => {
+        if(err) console.log("Categorizer delete error: " + err);
+      }
+      );
     }
   }
 

@@ -17,7 +17,7 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   getAllTransactions(): Observable<Transaction[]> {
-    return this.http.get<Transaction[]>(this.baseUrl);
+    return this.http.get<Transaction[]>(this.baseUrl + 'transactions');
   }
 
   getAllCategories(): Observable<Category[]> {
@@ -26,30 +26,36 @@ export class DataService {
 
   /**
    *
-   * @param newCat
+   * @param newCat: string entry of the new category
    *
    *
    */
   insertNewCategory(newCat: string): Observable<Category> {
-    return this.http.post<Category>(this.baseUrl + `categories/${newCat}`, newCat, {
+    return this.http.post<Category>(this.baseUrl + `categories/insert/${newCat}`, newCat, {
       headers: new HttpHeaders({
         'Content-Type': 'text/plain'
       })
     })
   }
-
+  /**
+   *
+   * @param id: id of category to be deleted from database
+   */
   deleteCategory(id: number): Observable<Category> {
-    return this.http.delete<Category>(this.baseUrl + `categories/${id}`);
+    return this.http.delete<Category>(this.baseUrl + `categories/delete/${id}`);
+  }
+
+  /**
+   *
+   * @param transId id of the transaction being updated
+   * @param catId id of the new category for the transaction
+   */
+  updateTransaction(transId : number, catId: number) : Observable<Transaction> {
+    return this.http.put<Transaction>(this.baseUrl + `transactions/update/${transId}`, catId);
   }
 
 }
-  /*
-  *Transactions should be read only
-  *
-  deleteTransactions(id: number): Observable<any>{
-    return this.http.delete(this.baseUrl + `${id}`);
-  }
-  */
+
 
 
 

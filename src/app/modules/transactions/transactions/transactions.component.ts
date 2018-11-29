@@ -33,12 +33,12 @@ export class TransactionsComponent implements OnInit {
     return this.transactions;
   }
 
-  openCategorizerDialog(): void {
+  openCategorizerDialog(trans: Transaction): void {
 
     let dialogConfig = new MatDialogConfig();
     dialogConfig.width = '480px';
     dialogConfig.height = '600px';
-    dialogConfig.data = { name: "Good job Travis" };
+    dialogConfig.data = trans;
 
     let dialogRef = this.dialogService.open(CategorizerComponent, dialogConfig);
 
