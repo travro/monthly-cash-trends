@@ -50,8 +50,8 @@ export class DataService {
    * @param transId id of the transaction being updated
    * @param catId id of the new category for the transaction
    */
-  updateTransaction(transId : number, catId: number) : Observable<Transaction> {
-    return this.http.put<Transaction>(this.baseUrl + `transactions/update/${transId}`, catId);
+  updateTransaction(transId : number, category: string) : Observable<Transaction> {
+    return this.http.put<Transaction>(this.baseUrl + `transactions/update/${transId}`, category);
   }
 
 }
