@@ -35,7 +35,7 @@ router.route('/categories/insert/:newCat')
   .post((req, res) => {
     database.query(`CALL InsertCategory('${req.body}')`, (err, results) => {
       if (err) console.log('POST_Category error: ' + err);
-      if(results) console.log('POST_Category results: ' + results[0]);
+      if (results) console.log('POST_CATEGORY complete');
     })
   });
 
@@ -45,17 +45,17 @@ router.route('/categories/delete/:id')
     console.log("This is the body of the delete request: " + JSON.stringify(req.params.id));
     database.query(`CALL DeleteCategory(${req.params.id})`, (err, results) => {
       if (err) console.log('DELETE_Category error: ' + err);
-      if(results) console.log('DELETE_Category results: ' + results[0]);
+      if (results) console.log('DELETE_CATEGORY complete');
     })
   });
 
 //PUT category (Update the category of a single transaction)
 router.route('/transactions/update/:transId')
-  .put((req, res)=>{
+  .put((req, res) => {
     console.log("This is the body of the update/put request: " + req.body);
-    database.query(`CALL CategorizeSingleTransactions(${req.params.transId},${req.body})`,(err, results)=>{
-      if(err) console.log('PUT_TransactionCategory error:' + err);
-      if(results) console.log('PUT_TransactionCategory results: ' + results[0]);
+    database.query(`CALL CategorizeSingleTransaction(${req.params.transId},'${req.body}')`, (err, results) => {
+      if (err) console.log('PUT_TransactionCategory error:' + err);
+      if (results) console.log('PUT_TransactionCategory complete');
     })
   });
 
