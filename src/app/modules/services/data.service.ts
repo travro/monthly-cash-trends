@@ -49,9 +49,17 @@ export class DataService {
    *
    * @param transId id of the transaction being updated
    * @param catId id of the new category for the transaction
+   * @param applyAll boolean value, if true, update all transactions of the given id
    */
-  updateTransaction(transId : number, category: string) : Observable<Transaction> {
-    return this.http.put<Transaction>(this.baseUrl + `transactions/update/${transId}`, category);
+  updateTransaction(transId: number, category: string, applyAll: boolean): Observable<any> {
+    if (!applyAll) {
+      return this.http.put<Transaction>(this.baseUrl + `transactions/update-one/${transId}`, category);
+    } else {
+      return this.http.put<Transaction[]>(this.baseUrl + `transactions/update-all/${transId}`, category);
+    }
+
+
+
   }
 
 }

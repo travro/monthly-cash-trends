@@ -39,18 +39,30 @@ export class TransactionsComponent implements OnInit {
     let dialogConfig = new MatDialogConfig();
     dialogConfig.width = '480px';
     dialogConfig.height = '600px';
-    dialogConfig.data = trans;
+
+    //Transaction data injected into the categorizer component
+    dialogConfig.data = {
+      applyAll: false,
+      dataTransaction: trans
+    }
 
     let dialogRef = this.dialogService.open(CategorizerComponent, dialogConfig);
 
     //
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('Dialogue close results: ' + result.category);
+      console.log('Dialogue close results. Category:' + result.dataTransaction.category + ', and boolean for apply all: ' +  result.applyAll);
 
-      //check for change in the category of the transaction, if true call update
-      if (originalCategory != result.category) {
-        this.rest.updateTransaction(trans.id, result.category).subscribe((t) => {
-          this.transactions.find(tran => tran.id == t.id).category == result.category;
+      //Check for change in the category of the transaction, if true call update
+      //If apply all is true, all transactions of the given vendor should be updated
+      if (originalCategory != result.dataTransaction.category) {
+        this.rest.updateTransaction(trans.id, result.dataTransaction.category, result.applyAll).subscribe((t) => {
+         if(!result.applyAll){
+          this.transactions.find(tran => tran.id == t.id).category == result.dataTransaction.category;
+         }else{
+          this.transactions.filter(tran => tran.id = t.id).forEach((c) => {
+            c.category = result.dataTransaction.category;
+          })
+         }
         });
       }
     })

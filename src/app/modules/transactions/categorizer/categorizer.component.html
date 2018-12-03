@@ -1,6 +1,6 @@
 <h3>
   <p>
-    {{data.vendor}} is currently categorized as: {{data.category}}
+    {{data.dataTransaction.vendor}} is currently categorized as: {{data.dataTransaction.category}}
   </p>
   <p *ngIf="selectedCategory && selectedCategory != data.category">
     Will be changed to: {{selectedCategory}}
@@ -13,9 +13,9 @@
   <main class="categorizer-menu">
     <h4>Category Options</h4>
     <button (click)="insertNewCategory()">Add Category </button>
-    <button (click)="removeSelectedCategory()" [disabled] = "!selectedCategory ||selectedCategory == 'Uncategorized' || selectedCategory == data.category">Remove Selected</button>
+    <button (click)="removeSelectedCategory()" [disabled] = "!selectedCategory ||selectedCategory == 'Uncategorized'">Remove Selected</button>
     <button disabled>Rename Selected</button>
-    <input type="checkbox" name="checkbox-apply-all">
+    <input type="checkbox" name="checkbox-apply-all" [checked] = "applyAll" (change)="applyAll = !applyAll">
     <label for="apply-all">Apply this category to all transactions with this vendor</label>
 
   </main>
@@ -26,4 +26,4 @@
   </aside>
 </div>
 <button (click)="closeNoChanges()">Close</button>
-<button (click)="applyChanges()" [disabled]="!selectedCategory || selectedCategory == data.category">Apply</button>
+<button (click)="applyChanges()" [disabled]="(!selectedCategory || selectedCategory == data.category) && !applyAll" >Apply</button>

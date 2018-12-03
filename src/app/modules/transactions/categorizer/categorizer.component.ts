@@ -2,7 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { DataService } from '../../services/data.service';
-import { Transaction } from '../../models/transaction.model';
 import { Category } from '../../models/category.model';
 
 
@@ -15,6 +14,7 @@ export class CategorizerComponent implements OnInit {
 
   private categories: Category[];
   public selectedCategory: string;
+  public applyAll: boolean = false;
 
   //MatDialogRef contains a dialog reference to the component in the dialog
   //MAT_DIALOG_DATA holds the data passed in by MatDialogConfig, which was injected in the parent (transactions.component.ts)
@@ -58,7 +58,7 @@ export class CategorizerComponent implements OnInit {
   removeSelectedCategory(): void {
     let catToRemove: Category = this.categories.find((cat) => cat.category == this.selectedCategory);
 
-    if (confirm(`Remove the selected category: ${this.selectedCategory}?`)) {
+    if (confirm(`Remove the selected category: ${this.selectedCategory}? \nWARNING: Any transaction already set to this category will be reset to 'Uncategorized'`)) {
       this.rest.deleteCategory(catToRemove.id).subscribe((c) => {
         this.categories.splice(this.categories.findIndex((i) => i.id == c.id), 1)
       },
@@ -77,10 +77,20 @@ export class CategorizerComponent implements OnInit {
 
   //Closes the dialog box with changes to the transaction's category
   applyChanges(): void {
-    if (confirm(`Apply the category ${this.selectedCategory} to ${this.data.vendor}?`)) {
-      this.data.category = this.selectedCategory;
-      this.dialogRef.close(this.data);
+
+    //Check for updating a transaction, if apply all is checked the Window.confirm() box will ask for confirmation to apply the category to all vendors
+    if (confirm(`Apply the category ${this.selectedCategory} to ${this.data.dataTransaction.vendor} ${(this.data.applyAll)? 'and to all of their transactions?': '?'}`)) {
+
+      if (!this.applyAll) {// for updating a single transaction of a given vendor
+        this.data.dataTransaction.category = this.selectedCategory;
+        this.dialogRef.close(this.data);
+      } else { // for all transaction of the same vendor
+        this.data.applyAll = true;
+        this.data.dataTransaction.category = this.selectedCategory;
+        this.dialogRef.close(this.data);
+      }
       this.selectedCategory = null;
+      this.applyAll = false;
     }
   }
 }
