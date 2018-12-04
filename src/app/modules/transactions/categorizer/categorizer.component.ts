@@ -24,7 +24,7 @@ export class CategorizerComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data) {
 
     this.rest.getAllCategories().subscribe(
-      (cats) => { this.categories = cats }
+      (observer: Category[]) => { this.categories = observer }
     );
 
   }
@@ -39,10 +39,10 @@ export class CategorizerComponent implements OnInit {
    */
   insertNewCategory(): void {
     let newCat = prompt("Insert the name of the new category (Letters only)");
-    if (/^[a-zA-Z]+$/.test(newCat) && newCat !== '') {
+    if (/^[a-zA-Z\s]+$/.test(newCat) && newCat !== '') {
       this.rest.insertNewCategory(newCat).subscribe(
-        (cat) => {
-          this.categories.push(cat);
+        (observer: Category) => {
+          this.categories.push(observer);
         },
         (err) => {
           if (err) console.log("Categorizer insert error: " + err);
@@ -59,9 +59,10 @@ export class CategorizerComponent implements OnInit {
     let catToRemove: Category = this.categories.find((cat) => cat.category == this.selectedCategory);
 
     if (confirm(`Remove the selected category: ${this.selectedCategory}? \nWARNING: Any transaction already set to this category will be reset to 'Uncategorized'`)) {
-      this.rest.deleteCategory(catToRemove.id).subscribe((c) => {
-        this.categories.splice(this.categories.findIndex((i) => i.id == c.id), 1)
-      },
+      this.rest.deleteCategory(catToRemove.id).subscribe(
+        (observer : Category) => {
+          this.categories.splice(this.categories.findIndex((subjInCategories) => subjInCategories.id == observer.id), 1)
+        },
         (err) => {
           if (err) console.log("Categorizer delete error: " + err);
         }
@@ -79,7 +80,7 @@ export class CategorizerComponent implements OnInit {
   applyChanges(): void {
 
     //Check for updating a transaction, if apply all is checked the Window.confirm() box will ask for confirmation to apply the category to all vendors
-    if (confirm(`Apply the category ${this.selectedCategory} to ${this.data.dataTransaction.vendor} ${(this.data.applyAll)? 'and to all of their transactions?': '?'}`)) {
+    if (confirm(`Apply the category ${this.selectedCategory} to ${this.data.dataTransaction.vendor} ${(this.data.applyAll) ? 'and to all of their transactions?' : '?'}`)) {
 
       if (!this.applyAll) {// for updating a single transaction of a given vendor
         this.data.dataTransaction.category = this.selectedCategory;

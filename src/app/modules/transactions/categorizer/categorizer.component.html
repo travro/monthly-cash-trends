@@ -1,4 +1,5 @@
 <h3>
+  <!--Dialogue Header-->
   <p>
     {{data.dataTransaction.vendor}} is currently categorized as: {{data.dataTransaction.category}}
   </p>
@@ -10,6 +11,7 @@
   </p>
 </h3>
 <div class="categorizer-main">
+  <!--Dialogue Menu-->
   <main class="categorizer-menu">
     <h4>Category Options</h4>
     <button (click)="insertNewCategory()">Add Category </button>
@@ -19,9 +21,10 @@
     <label for="apply-all">Apply this category to all transactions with this vendor</label>
 
   </main>
+  <!--Dialogue Category List-->
   <aside class="category-list">
     <select size="15" [(ngModel)]="selectedCategory">
-      <option *ngFor="let cat of categories" [selected]="cat.category == data.category">{{cat.category}}</option>
+      <option *ngFor="let cat of cats" [selected]="cat.category == data.category">{{cat.category}}</option>
     </select>
   </aside>
 </div>
