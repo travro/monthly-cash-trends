@@ -1,6 +1,6 @@
 use mct;
 
-insert into transactions (dt, vendor, amount) values
+insert into transactions (dt, vendor, amount) values 
 (curdate(), 'DummyVendor1', Rand()*100 + Rand()),
 (curdate(), 'DummyVendor2', Rand()*100 + Rand()),
 (curdate(), 'DummyVendor3', Rand()*100 + Rand()),
