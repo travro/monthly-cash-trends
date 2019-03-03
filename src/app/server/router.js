@@ -29,21 +29,28 @@ router.route('/categories')
       res.send(results[0]);
     })
   });
-
-//POST new category
+/**
+ * POST new category:
+ * Adds new category line to categories table
+ * Adds new budget id to budgets_20XX table with default values of 0.00 for each month
+ */
 router.route('/categories/insert/:newCat')
   .post((req, res) => {
-    database.query(`CALL InsertCategory('${req.body}')`, (err, results) => {
+    database.query(`CALL InsertCategoryWithBudget('${req.body}')`, (err, results) => {
       if (err) console.log('POST_Category error: ' + err);
       if (results) console.log('POST_CATEGORY complete');
     })
   });
 
-//DELETE category
+/**
+ * DELETE category:
+ * Deletes first the budget in the budgets_20xx and values for the selected category id
+ * Deletes the category in teh categories table
+ */
 router.route('/categories/delete/:id')
   .delete((req, res) => {
     console.log("This is the body of the delete request: " + JSON.stringify(req.params.id));
-    database.query(`CALL DeleteCategory(${req.params.id})`, (err, results) => {
+    database.query(`CALL DeleteCategoryWithBudget(${req.params.id})`, (err, results) => {
       if (err) console.log('DELETE_Category error: ' + err);
       if (results) console.log('DELETE_CATEGORY complete');
     })
