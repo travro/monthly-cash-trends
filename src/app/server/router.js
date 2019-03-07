@@ -9,6 +9,15 @@ router.use(bodyParser.text());
 /*
 *Node Express routing for MySQL called Procedures
 */
+//Get Budget
+router.route('/budget')
+  .get((req, res) => {
+    database.query('SELECT * FROM budget2019', (err, results, fields) =>{
+      if (err) console.log('GET all trans error: ' + err);
+      console.log('GET_Budget complete');
+      res.send(results);
+    })
+  });
 
 //GET all transactions
 router.route('/transactions')
@@ -68,12 +77,12 @@ router.route('/transactions/update-one/:transId')
 
 //PUT category (Update the category of multiple transactions
 router.route('/transactions/update-all/:transId')
-.put((req, res) => {
-  console.log("This is the body of the update/put request: " + req.body);
-  database.query(`CALL CategorizeMultipleTransactions(${req.params.transId},'${req.body}')`, (err, results) => {
-    if (err) console.log('PUT_MultipleTransactionCategory error:' + err);
-    if (results) console.log('PUT_MultipleTransactionCategory complete');
-  })
-});
+  .put((req, res) => {
+    console.log("This is the body of the update/put request: " + req.body);
+    database.query(`CALL CategorizeMultipleTransactions(${req.params.transId},'${req.body}')`, (err, results) => {
+      if (err) console.log('PUT_MultipleTransactionCategory error:' + err);
+      if (results) console.log('PUT_MultipleTransactionCategory complete');
+    })
+  });
 
 module.exports = router;
