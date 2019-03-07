@@ -1,3 +1,62 @@
-<p>
-  budget works!
-</p>
+<table>
+  <thead>
+    <tr>
+      <td>Category</td>
+      <td>January</td>
+      <td>February</td>
+      <td>March</td>
+      <td>April</td>
+      <td>May</td>
+      <td>June</td>
+      <td>July</td>
+      <td>August</td>
+      <td>September</td>
+      <td>October</td>
+      <td>November</td>
+      <td>December</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let b of buds">
+      <td>
+        {{b.Category}}
+      </td>
+      <td>
+        {{b.January}}
+      </td>
+      <td>
+        {{b.February}}
+      </td>
+      <td>
+        {{b.March}}
+      </td>
+      <td>
+        {{b.April}}
+      </td>
+      <td>
+        {{b.May}}
+      </td>
+      <td>
+        {{b.June}}
+      </td>
+      <td>
+        {{b.July}}
+      </td>
+      <td>
+        {{b.August}}
+      </td>
+      <td>
+        {{b.September}}
+      </td>
+      <td>
+        {{b.October}}
+      </td>
+      <td>
+        {{b.November}}
+      </td>
+      <td>
+        {{b.December}}
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs'
 //
 import { Transaction } from '../models/transaction.model';
 import { Category } from '../models/category.model';
+import { Budget } from '../models/budget.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,10 @@ export class DataService {
   baseUrl: string = 'http://localhost:3500/';
 
   constructor(private http: HttpClient) { }
+
+  getBudget(): Observable<Budget[]>{
+    return this.http.get<Budget[]>(this.baseUrl + 'budget');
+  }
 
   getAllTransactions(): Observable<Transaction[]> {
     return this.http.get<Transaction[]>(this.baseUrl + 'transactions');
