@@ -9,7 +9,7 @@ import { DataService } from '../../services/data.service';
 @Component({
   selector: 'app-transactions',
   templateUrl: './transactions.component.html',
-  styleUrls: ['./transactions.component.css']
+  styleUrls: ['../../../app.component.css']
 })
 
 export class TransactionsComponent implements OnInit {
