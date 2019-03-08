@@ -1,7 +1,6 @@
 <table>
   <thead>
     <tr>
-      <td>ID</td>
       <td>Date/Time</td>
       <td>Vendor</td>
       <td>Category</td>
@@ -12,10 +11,7 @@
   <tbody>
     <tr *ngFor="let t of trans">
       <td>
-        {{t.id}}
-      </td>
-      <td>
-        {{t.date}}
+        {{t.date | date: "M/dd/yyyy"}}
       </td>
       <td>
         {{t.vendor}}
@@ -23,8 +19,8 @@
       <td>
         <button (click)="openCategorizerDialog(t)">{{t.category}}</button>
       </td>
-      <td>
-        {{t.amount}}
+      <td align="right">
+        {{t.amount | currency:'USD':''}}
       </td>
       <td>
 
