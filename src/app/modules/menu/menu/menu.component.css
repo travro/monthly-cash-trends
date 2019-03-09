@@ -12,7 +12,7 @@ main {
 }
 
 header, main {
-  border-bottom: 1px solid rgb(49, 204, 96);
+  border-bottom: 1px solid rgb(205, 228, 212);
 }
 
 header #logout-btn{
@@ -48,7 +48,7 @@ nav, .app-container {
 }
 
 .app-container {
-  background-color: rgb(177, 214, 181);
+  background-color: white;
   text-align: center;
   height: 100%;
 }
@@ -73,11 +73,8 @@ footer {
     text-align: right;
     font-size: 1.1em;
   }
-  .nav-link::after {
-    content: ' \25BA';
-  }
   .app-container {
-    width: calc(100% - 170px);
+    width: calc(100% - 200px);
     float: right;
     height: 100%;
   }

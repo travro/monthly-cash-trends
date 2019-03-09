@@ -1,3 +1,4 @@
-.budget-table tbody td{
+tbody tr td, tbody tr td button{ 
   text-align: right;
+  margin-right: 15px;
 }
