@@ -1,36 +1,36 @@
 {
-    "TODO": {
-        "Transactions Table": [
-            "Pipe amount",
-            "Align amount right",
-            "Add",
-            "Alter",
-            "Delete",
-            "Sort table",
-            "Filter table",
-            "Pipe - Pagination",
-            "Css Stylilng",
-            "Remove 'uncategorized' from table?"
-        ],
-        "Budget Table": [
-            "Sort table",
-            "Css Stylilng"
-        ],
-        "Rest Data Service": [
-            "consolidate http requests with angular request class"
-        ],
-        "package.json": [
-            "add nodeamon"
-        ]
-    },
-    "TOFIX": {
-        "Transactions Table": [
-            "Categorizing multiple transactions does not update button values on all applicable ",
-            "Header row background color not registering with app.component.css"
-        ],
-        "Categorizer Menu": [
-            "Removing category does not delete it from list",
-            "Apply-all button grayed out when select category equals its current categorization"
-        ]
-    }
+  "TODO": {
+    "Transactions Table": [
+      "Add",
+      "Alter",
+      "Delete",
+      "Sort table",
+      "Filter table",
+      "Pipe - Pagination",
+      "Css Stylilng",
+      "Remove 'uncategorized' from table?"
+    ],
+    "Budget Table": [
+      "Buttonize values",
+      "Sort table",
+      "Css Styling",
+      "b19_max functionality"
+    ],
+    "Rest Data Service": [
+      "consolidate http requests with angular request class"
+    ],
+    "package.json": [
+      "add nodeamon"
+    ]
+  },
+  "TOFIX": {
+    "Transactions Table": [
+      "Categorizing multiple transactions does not update button values on all applicable ",
+      "Header row background color not registering with app.component.css"
+    ],
+    "Categorizer Menu": [
+      "Removing category does not delete it from list",
+      "Apply-all button grayed out when select category equals its current categorization"
+    ]
+  }
 }
