@@ -5,17 +5,15 @@ import { DataService } from '../../services/data.service';
 
 @Component({
   templateUrl: './budget.component.html',
-  styleUrls: ['../../../app.component.css']
+  styleUrls: ['../../../app.component.css', './budget.component.css']
 })
 export class BudgetComponent implements OnInit {
 
   private budget: Budget[];
-  
+
   constructor(private rest: DataService) {
-    this.rest.getBudget().subscribe(
-      (data) => this.budget = data      
-    );
-    
+    this.rest.getBudget().subscribe((records) => this.budget = records);
+
    }
 
   ngOnInit() {
@@ -23,6 +21,6 @@ export class BudgetComponent implements OnInit {
 
   get buds(): Budget[] {
     return this.budget;
-  } 
+  }
 
 }

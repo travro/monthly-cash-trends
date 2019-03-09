@@ -1,4 +1,4 @@
-<table>
+<table class="budget-table">
   <thead>
     <tr>
       <td>Category</td>
@@ -22,40 +22,40 @@
         {{b.Category}}
       </td>
       <td>
-        {{b.January}}
+        <button>{{b.January || 0 | currency:'USD':''}}</button>
       </td>
       <td>
-        {{b.February}}
+        <button>{{b.February || 0 | currency:'USD':''}}</button>
       </td>
       <td>
-        {{b.March}}
+        <button>{{b.March || 0 | currency:'USD':''}}</button>
       </td>
       <td>
-        {{b.April}}
+        <button>{{b.April || 0 | currency:'USD':''}}</button>
       </td>
       <td>
-        {{b.May}}
+        <button>{{b.May || 0 | currency:'USD':''}}</button>
       </td>
       <td>
-        {{b.June}}
+        <button>{{b.June || 0 | currency:'USD':''}}</button>
       </td>
       <td>
-        {{b.July}}
+        <button>{{b.July || 0 | currency:'USD':''}}</button>
       </td>
       <td>
-        {{b.August}}
+        <button>{{b.August || 0 | currency:'USD':''}}</button>
       </td>
       <td>
-        {{b.September}}
+        <button>{{b.September || 0 | currency:'USD':''}}</button>
       </td>
       <td>
-        {{b.October}}
+        <button>{{b.October || 0 | currency:'USD':''}}</button>
       </td>
       <td>
-        {{b.November}}
+        <button>{{b.November || 0 | currency:'USD':''}}</button>
       </td>
       <td>
-        {{b.December}}
+        <button>{{b.December || 0 | currency:'USD':''}}</button>
       </td>
     </tr>
   </tbody>
