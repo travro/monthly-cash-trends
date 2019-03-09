@@ -30,7 +30,6 @@
     ],
     "Categorizer Menu": [
       "Removing category does not delete it from list",
-      "Apply-all button grayed out when select category equals its current categorization"
     ]
   }
 }
