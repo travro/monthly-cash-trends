@@ -3,10 +3,10 @@
   <p>
     {{data.dataTransaction.vendor}} is currently categorized as: {{data.dataTransaction.category}}
   </p>
-  <p *ngIf="selectedCategory && selectedCategory != data.category">
+  <p *ngIf="selectedCategory && selectedCategory != data.dataTransaction.category">
     Will be changed to: {{selectedCategory}}
   </p>
-  <p *ngIf="!selectedCategory || selectedCategory == data.category">
+  <p *ngIf="!selectedCategory || selectedCategory == data.dataTransaction.category">
 
   </p>
 </h3>
@@ -18,15 +18,15 @@
     <button (click)="removeSelectedCategory()" [disabled] = "!selectedCategory ||selectedCategory == 'Uncategorized'">Remove Selected</button>
     <button disabled>Rename Selected</button>
     <input type="checkbox" name="checkbox-apply-all" [checked] = "applyAll" (change)="applyAll = !applyAll">
-    <label for="apply-all">Apply this category to all transactions with this vendor</label>
+    <label for="checkbox-apply-all">Apply this category to all transactions with this vendor</label>
 
   </main>
   <!--Dialogue Category List-->
   <aside class="category-list">
     <select size="15" [(ngModel)]="selectedCategory">
-      <option *ngFor="let cat of cats" [selected]="cat.category == data.category">{{cat.category}}</option>
+      <option *ngFor="let cat of cats; let i = index" [selected]="cat.category == data.dataTransaction.category">{{cat.category}}</option>
     </select>
   </aside>
 </div>
 <button (click)="closeNoChanges()">Close</button>
-<button (click)="applyChanges()" [disabled]="(!selectedCategory || selectedCategory == data.category) && !applyAll" >Apply</button>
+<button (click)="applyChanges()" [disabled]="(!selectedCategory || selectedCategory == data.dataTransaction.category) && !applyAll" >Apply</button>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 
 import { Transaction } from '../../models/transaction.model';
@@ -9,33 +9,35 @@ import { DataService } from '../../services/data.service';
 @Component({
   selector: 'app-transactions',
   templateUrl: './transactions.component.html',
-  styleUrls: ['../../../app.component.css']
+  styleUrls: ['../../../app.component.css', './transactions.component.css']
 })
 
-export class TransactionsComponent implements OnInit {
+export class TransactionsComponent implements OnInit, OnChanges {
 
   private transactions: Transaction[];
 
   //MatDialog is the service that opens the dialog component (categorizer.component.ts) on behalf of this component
-  constructor(
-    private rest: DataService,
-    private dialogService: MatDialog) {
+  constructor(private rest: DataService, private dialogService: MatDialog) {
     this.rest.getAllTransactions().subscribe(
       (data) => this.transactions = data
     );
   }
 
   ngOnInit() {
+    console.log('this thing got initiated, Trav')
+  }
 
+  ngOnChanges() {
+    console.log('sumtin changed, Trav')
   }
 
   get trans(): Transaction[] {
     return this.transactions;
   }
 
-  openCategorizerDialog(trans: Transaction): void {
+  openCategorizerDialog(selectedTrans: Transaction): void {
 
-    let originalCategory: string = trans.category;
+    let originalCategory: string = selectedTrans.category;
     let dialogConfig = new MatDialogConfig();
     dialogConfig.width = '480px';
     dialogConfig.height = '600px';
@@ -43,33 +45,18 @@ export class TransactionsComponent implements OnInit {
     //Transaction data injected into the categorizer component
     dialogConfig.data = {
       applyAll: false,
-      dataTransaction: trans
+      dataTransaction: selectedTrans
     }
 
     let dialogRef = this.dialogService.open(CategorizerComponent, dialogConfig);
 
-    //
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('Dialogue close results. Category:' + result.dataTransaction.category + ', and boolean for apply all: ' +  result.applyAll);
-
-      //Check for change in the category of the transaction, if true call update
-      //If apply all is true, all transactions of the given vendor should be updated
-      if (originalCategory != result.dataTransaction.category) {
-        this.rest.updateTransaction(trans.id, result.dataTransaction.category, result.applyAll).subscribe((t) => {
-         if(!result.applyAll){
-          this.transactions.find(tran => tran.id == t.id).category == result.dataTransaction.category;
-         }else{
-          this.transactions.filter(tran => tran.id = t.id).forEach((c) => {
-            c.category = result.dataTransaction.category;
-          })
-         }
-        });
-      }
-    })
-
-
-
+      if(originalCategory != result.dataTransaction.category || result.dataTransaction.applyAll)
+      if(result.applyAll){
+        this.transactions.forEach((one) =>{ if(one.vendor == result.dataTransaction.vendor){ one.category = result.dataTransaction.category}})
+      }      
+      this.rest.updateTransaction(selectedTrans.id, result.dataTransaction.category, result.applyAll).subscribe();
+    });
   }
 }
-
 

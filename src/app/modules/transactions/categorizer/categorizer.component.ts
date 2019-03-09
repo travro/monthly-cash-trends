@@ -26,10 +26,12 @@ export class CategorizerComponent implements OnInit {
     this.rest.getAllCategories().subscribe(
       (observer: Category[]) => { this.categories = observer }
     );
-
+    this.selectedCategory = data.dataTransaction.category;
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    console.log(this.selectedCategory + ' is this instance\'s selected category')
+   }
 
   get cats(): Category[] {
     return this.categories;
@@ -78,6 +80,8 @@ export class CategorizerComponent implements OnInit {
 
   //Closes the dialog box with changes to the transaction's category
   applyChanges(): void {
+
+  
 
     //Check for updating a transaction, if apply all is checked the Window.confirm() box will ask for confirmation to apply the category to all vendors
     if (confirm(`Apply the category ${this.selectedCategory} to ${this.data.dataTransaction.vendor} ${(this.data.applyAll) ? 'and to all of their transactions?' : '?'}`)) {
