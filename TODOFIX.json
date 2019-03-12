@@ -30,6 +30,7 @@
     ],
     "Categorizer Menu": [
       "Removing category does not delete it from list",
+      "Cancelling an added category POSTs a null parameter"
     ]
   }
 }
