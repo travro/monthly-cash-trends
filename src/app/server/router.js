@@ -2,13 +2,10 @@ const router = require('express').Router();
 const database = require('./database');
 const bodyParser = require('body-parser');
 
-
-//Using body parser to parse strings
 router.use(bodyParser.text());
 
-/*
-*Node Express routing for MySQL called Procedures
-*/
+//Node Express routing for MySQL stored procedures
+
 //Get Budget
 router.route('/budget')
   .get((req, res) => {
@@ -19,7 +16,7 @@ router.route('/budget')
     })
   });
 
-//GET all transactions
+//GET transactions
 router.route('/transactions')
   .get((req, res) => {
     database.query(`CALL GetAllTransactions()`, (err, results, fields) => {
@@ -29,7 +26,7 @@ router.route('/transactions')
     })
   });
 
-//GET all categories
+//GET categories
 router.route('/categories')
   .get((req, res) => {
     database.query('CALL GetAllCategories()', (err, results) => {
@@ -38,24 +35,22 @@ router.route('/categories')
       res.send(results[0]);
     })
   });
-/**
- * POST new category:
- * Adds new category line to categories table
- * Adds new budget id to budgets_20XX table with default values of 0.00 for each month
- */
+  
+//POST category : my-sql plugin result does not include row, hence second query to return the category
 router.route('/categories/insert/:newCat')
   .post((req, res) => {
-    database.query(`CALL InsertCategoryWithBudget('${req.body}')`, (err, results) => {
+    database.query(`CALL InsertCategoryWithBudget('${req.body}')`, (err, result) => {
       if (err) console.log('POST_Category error: ' + err);
-      if (results) console.log('POST_CATEGORY complete');
+      if(result.affectedRows){
+        database.query(`select * from categories where category = '${req.body}'`, (err, result)=>{
+          if(result) res.send(result[0]);
+          if(err) console.log(err);          
+        })
+      }       
     })
   });
 
-/**
- * DELETE category:
- * Deletes first the budget in the budgets_20xx and values for the selected category id
- * Deletes the category in teh categories table
- */
+//DELETE category 
 router.route('/categories/delete/:id')
   .delete((req, res) => {
     console.log("This is the body of the delete request: " + JSON.stringify(req.params.id));
@@ -65,7 +60,7 @@ router.route('/categories/delete/:id')
     })
   });
 
-//PUT category (Update the category of a single transaction
+//PUT transaction: Update the category of a single transaction
 router.route('/transactions/update-one/:transId')
   .put((req, res) => {
     console.log("This is the body of the update/put request: " + req.body);
@@ -75,7 +70,7 @@ router.route('/transactions/update-one/:transId')
     })
   });
 
-//PUT category (Update the category of multiple transactions
+//PUT transaction: Update the category of multiple transactions
 router.route('/transactions/update-all/:transId')
   .put((req, res) => {
     console.log("This is the body of the update/put request: " + req.body);
