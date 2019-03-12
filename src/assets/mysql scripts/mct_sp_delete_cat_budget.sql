@@ -8,5 +8,6 @@ where transactions.cat_id = thisId;
 
 delete from b19_max where b19_max.id = thisId;
 delete from categories where categories.id = thisId;
+alter table categories auto_increment = 1;
 
 END
