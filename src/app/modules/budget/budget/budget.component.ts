@@ -11,8 +11,8 @@ export class BudgetComponent implements OnInit {
 
   private budget: Budget[];
 
-  constructor(private rest: DataService) {
-    this.rest.getBudget().subscribe((records) => this.budget = records);
+  constructor(private dataService: DataService) {
+    this.dataService.getBudget().subscribe((records) => this.budget = records);
 
    }
 

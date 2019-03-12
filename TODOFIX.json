@@ -17,20 +17,15 @@
       "b19_max functionality"
     ],
     "Rest Data Service": [
-      "consolidate http requests with angular request class"
+      "consolidate http requests (duplicate code) with angular request class"
     ],
     "package.json": [
       "add nodeamon"
     ]
   },
   "TOFIX": {
-    "Transactions Table": [
-      "Categorizing multiple transactions does not update button values on all applicable ",
-      "Header row background color not registering with app.component.css"
-    ],
     "Categorizer Menu": [
-      "Removing category does not delete it from list",
-      "Cancelling an added category POSTs a null parameter"
+      "Cancelling an added category POSTs a null parameter. Still an issue?"
     ]
   }
 }

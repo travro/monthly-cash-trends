@@ -28,7 +28,6 @@ export class DataService {
     return this.http.get<Category[]>(this.baseUrl + 'categories');
   }
 
-  //TOFIX - not sending value back to categorizer component?
   insertNewCategory(newCat: string): Observable<Category> {
     return this.http.post<Category>(this.baseUrl + `categories/insert/${newCat}`, newCat);
   }
