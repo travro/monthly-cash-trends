@@ -6,6 +6,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 Run `npm run server` to run the node server. Using the Express router, Node will connect to a MySQL database. MCT uses the following MySQL Schema:
 ![MCT Database](src/assets/mct_schema.png)
 
+Categorizer component used to categorize transactions and alter the categories DB:
+![MCT Database](src/assets/mct_screenshot.png)
+
 ## Development server
 
 Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
