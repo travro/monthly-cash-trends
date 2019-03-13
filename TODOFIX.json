@@ -23,9 +23,13 @@
       "add nodeamon"
     ]
   },
+  /**********************************************************************************/
   "TOFIX": {
     "Categorizer Menu": [
       "Cancelling an added category POSTs a null parameter. Still an issue?"
+    ],
+    "Transactions Menu": [
+      "Deleting a category does not remove it from transaction tree. Can mat dialogue send data back before closing?"
     ]
   }
 }
