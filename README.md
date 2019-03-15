@@ -1,17 +1,15 @@
 # Mct
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.4.
-## Node Web Server
+
 
 Categorizer component used to categorize transactions and alter the categories DB:
 ![MCT Database](src/assets/mct_screenshot.png)
 
-
-
-
 MCT uses the following MySQL Schema:
 ![MCT Database](src/assets/mct_schema.png)
 
+## Node Web Server
 Run `npm run server` to run the node server. Using the Express router, Node will connect to a MySQL database. 
 
 ## Development server
