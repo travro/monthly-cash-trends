@@ -32,7 +32,6 @@ export class TransactionsComponent implements OnInit {
   //TOFIX -- code is calling PUT request even without changes
   openCategorizerDialog(selectedTrans: Transaction): void {
 
-    let openingCategory: string = selectedTrans.category;
     let dialogConfig = new MatDialogConfig();
     dialogConfig.width = '480px';
     dialogConfig.height = '600px';
@@ -48,12 +47,15 @@ export class TransactionsComponent implements OnInit {
     dialogRef
       .afterClosed()
       .subscribe((result) => {
+        console.log("How transaction read result:" + result.applyAll);
         //check if there was a change in category or an application to all vendors of the current category
-        if (openingCategory != result.dataTransaction.category || result.dataTransaction.applyAll) {
-          if (result.dataTransaction.applyAll) {
-            this.transactions.forEach((element : Transaction) => { if (element.vendor == result.dataTransaction.vendor) { element.category = result.dataTransaction.category } })
+        if (selectedTrans.category != result.dataTransaction.category || result.applyAll) {
+          if (result.applyAll) {
+            this.transactions.forEach((element: Transaction) => { if (element.vendor == result.dataTransaction.vendor) { element.category = result.dataTransaction.category } })
           }
-          this.dataService.updateTransaction(selectedTrans.id, result.dataTransaction.category, result.applyAll).subscribe();
+          this.dataService
+            .updateTransaction(selectedTrans.id, result.dataTransaction.category, result.applyAll)
+            .subscribe();
         }
       });
   }

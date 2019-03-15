@@ -82,10 +82,8 @@ export class CategorizerComponent implements OnInit {
   applyChanges(): void {
     if (confirm(`Apply the category ${this.selectedCategory} to ${this.data.dataTransaction.vendor} ${(this.applyAll) ? 'and to all of their transactions?' : '?'}`)) {
       this.data.dataTransaction.category = this.selectedCategory;
-      this.data.dataTransaction.applyAll = this.applyAll;
+      this.data.applyAll = this.applyAll;
       this.dialogRef.close(this.data);
-      this.selectedCategory = null;
-      this.applyAll = false;
     }
   }
 }
