@@ -67,7 +67,7 @@ router
 router
   .route('/transactions/update-one/:transId')
   .put((req, res) => {
-    console.log("This is the body of the update/put request: " + req.body);
+    console.log("This is the body of the update/put request(single): " + req.body);
     database.query(`CALL CategorizeSingleTransaction(${req.params.transId},'${req.body}')`, (err, result) => {
       if (err) console.log('PUT_SingleTransactionCategory error:' + err);
     })
@@ -77,7 +77,7 @@ router
 router
   .route('/transactions/update-all/:transId')
   .put((req, res) => {
-    console.log("This is the body of the update/put request: " + req.body);
+    console.log("This is the body of the update/put request(multiple): " + req.body);
     database.query(`CALL CategorizeMultipleTransactions(${req.params.transId},'${req.body}')`, (err, results) => {
       if (err) console.log('PUT_MultipleTransactionCategory error:' + err);
     })
