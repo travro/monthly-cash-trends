@@ -29,4 +29,4 @@
   </aside>
 </div>
 <button (click)="closeNoChanges()">Close</button>
-<button (click)="applyChanges()" [disabled]="(!selectedCategory || selectedCategory == data.dataTransaction.category) && !applyAll" >Apply</button>
+<button (click)="closeApplyChanges()" [disabled]="(!selectedCategory || selectedCategory == data.dataTransaction.category) && !applyAll" >Apply</button>

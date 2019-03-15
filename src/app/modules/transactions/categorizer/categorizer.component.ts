@@ -66,6 +66,15 @@ export class CategorizerComponent implements OnInit {
         .subscribe(
           (deletedCategory: Category) => {
             this.categories.splice(this.categories.findIndex((element : Category) => element.id == deletedCategory.id), 1);
+            /**
+             * 
+             * 
+             */
+            
+            /**
+             * 
+             * 
+             */
           },
           (err) => {
             if (err) console.log("Categorizer delete error: " + err);
@@ -79,7 +88,7 @@ export class CategorizerComponent implements OnInit {
 
   }
 
-  applyChanges(): void {
+  closeApplyChanges(): void {
     if (confirm(`Apply the category ${this.selectedCategory} to ${this.data.dataTransaction.vendor} ${(this.applyAll) ? 'and to all of their transactions?' : '?'}`)) {
       this.data.dataTransaction.category = this.selectedCategory;
       this.data.applyAll = this.applyAll;
