@@ -40,7 +40,8 @@ export class TransactionsComponent implements OnInit {
     //Transaction data injected into the categorizer component
     dialogConfig.data = {
       applyAll: false,
-      dataTransaction: selectedTrans
+      dataTransaction: selectedTrans,
+      deletedCategories: []
     }
 
     let dialogRef = this.dialogService.open(CategorizerComponent, dialogConfig);
@@ -48,11 +49,21 @@ export class TransactionsComponent implements OnInit {
     dialogRef
       .afterClosed()
       .subscribe((result) => {
+        //check if there was a change in category or an application to all vendors of the current category
         if (openingCategory != result.dataTransaction.category || result.dataTransaction.applyAll) {
           if (result.dataTransaction.applyAll) {
-            this.transactions.forEach((element) => { if (element.vendor == result.dataTransaction.vendor) { element.category = result.dataTransaction.category } })
+            this.transactions.forEach((element : Transaction) => { if (element.vendor == result.dataTransaction.vendor) { element.category = result.dataTransaction.category } })
           }
           this.dataService.updateTransaction(selectedTrans.id, result.dataTransaction.category, result.applyAll).subscribe();
+        }
+
+        //check if the user deleted any categories prior to closing the dialog box
+        if(result.deletedCategories.length > 0){
+          result.deletedCategories.forEach((deletion : string) => {
+            this.transactions.forEach((element : Transaction) => {
+              element.category = (element.category == deletion)? 'Uncategorized' : element.category;
+            })
+          });
         }
       });
   }

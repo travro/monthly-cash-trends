@@ -47,6 +47,7 @@ export class CategorizerComponent implements OnInit {
         .subscribe(
           (newPostedCategory: Category) => {
             this.categories.push(newPostedCategory);
+            if(this.data.deletedCategories.includes(newPostedCategory.category)) this.data.deletedCategories.splice(newPostedCategory.category, 1);
           },
           (err) => {
             if (err) console.log("Categorizer insert error: " + err);
@@ -65,7 +66,8 @@ export class CategorizerComponent implements OnInit {
         .deleteCategory(catToRemove.id)
         .subscribe(
           (deletedCategory: Category) => {
-            this.categories.splice(this.categories.findIndex((subjInCategories) => subjInCategories.id == deletedCategory.id), 1)
+            this.categories.splice(this.categories.findIndex((element : Category) => element.id == deletedCategory.id), 1);
+            if(!this.data.deletedCategories.includes(deletedCategory.category)) this.data.deletedCategories.push(deletedCategory.category);
           },
           (err) => {
             if (err) console.log("Categorizer delete error: " + err);
