@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 
-//imported features
+// imported features
 import { LandingModule } from './modules/landing/landing.module';
 import { LoginModule } from './modules/login/login.module';
 import { MenuModule } from './modules/menu/menu.module';
@@ -25,7 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     LoginModule,
     MenuModule,
     HttpClientModule,
-    //product routes are configured after 'imported' feater routes
+    // product routes are configured after 'imported' feater routes
     RouterModule.forRoot([
       { path: 'home', component: LandingComponent },
       { path: 'login', component: LoginComponent },

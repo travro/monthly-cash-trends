@@ -16,7 +16,7 @@ export class TransactionsComponent implements OnInit {
 
   private transactions: Transaction[];
 
-  //MatDialog is the service that opens the dialog component (categorizer.component.ts) on behalf of this component
+  // MatDialog is the service that opens the dialog component (categorizer.component.ts) on behalf of this component
   constructor(private dataService: DataService, private dialogService: MatDialog) {
     this.dataService.getAllTransactions().subscribe((data) => this.transactions = data);
   }
@@ -29,29 +29,33 @@ export class TransactionsComponent implements OnInit {
     return this.transactions;
   }
 
-  //TOFIX -- code is calling PUT request even without changes
+  // TOFIX -- code is calling PUT request even without changes
   openCategorizerDialog(selectedTrans: Transaction): void {
 
-    let dialogConfig = new MatDialogConfig();
+    const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '480px';
     dialogConfig.height = '600px';
 
-    //Transaction data injected into the categorizer component
+    // Transaction data injected into the categorizer component
     dialogConfig.data = {
       applyAll: false,
       dataTransaction: selectedTrans
     }
 
-    let dialogRef = this.dialogService.open(CategorizerComponent, dialogConfig);
+    const dialogRef = this.dialogService.open(CategorizerComponent, dialogConfig);
 
     dialogRef
       .afterClosed()
       .subscribe((result) => {
-        console.log("How transaction read result:" + result.applyAll);
-        //check if there was a change in category or an application to all vendors of the current category
-        if (selectedTrans.category != result.dataTransaction.category || result.applyAll) {
+        console.log('How transaction read result:' + result.applyAll);
+        // check if there was a change in category or an application to all vendors of the current category
+        if (selectedTrans.category !== result.dataTransaction.category || result.applyAll) {
           if (result.applyAll) {
-            this.transactions.forEach((element: Transaction) => { if (element.vendor == result.dataTransaction.vendor) { element.category = result.dataTransaction.category } })
+            this.transactions.forEach((element: Transaction) => {
+              if (element.vendor === result.dataTransaction.vendor) {
+                element.category = result.dataTransaction.category;
+              }
+            });
           }
           this.dataService
             .updateTransaction(selectedTrans.id, result.dataTransaction.category, result.applyAll)

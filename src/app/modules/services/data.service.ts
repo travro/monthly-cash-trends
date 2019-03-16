@@ -12,7 +12,7 @@ import { Budget } from '../models/budget.model';
 
 export class DataService {
 
-  baseUrl: string = 'http://localhost:3500/';
+  baseUrl = 'http://localhost:3500/';
 
   constructor(private http: HttpClient) { }
 
@@ -37,7 +37,7 @@ export class DataService {
   }
 
   updateTransaction(transId: number, category: string, applyAll: boolean): Observable<void> {
-    let route : string = (applyAll)? 'all' : 'one';
+    const route: string = (applyAll) ? 'all' : 'one';
     return this.http.put<void>(this.baseUrl + `transactions/update-${route}/${transId}`, category);
   }
 

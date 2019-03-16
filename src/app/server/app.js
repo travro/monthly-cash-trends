@@ -13,16 +13,5 @@ app.use((req, res, next) => {
   next();
 });
 app.use('/', router);
-
-/*
-thisRouter.route('/')
-    .get((req, res) => {
-        res.send('home page bro');
-    });
-thisRouter.route('/transactions')
-    .get((req, res) => {
-        res.send("transactions");
-    });*/
-
 app.listen(3500, () => console.log("listening on 3500"));
 
