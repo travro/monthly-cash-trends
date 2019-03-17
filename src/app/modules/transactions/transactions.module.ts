@@ -1,11 +1,11 @@
-//Imports
+// Imports
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule} from '@angular/material';
 
-//Declarations
+// Declarations
 import { TransactionsComponent } from './transactions/transactions.component';
 import { CategorizerComponent } from './categorizer/categorizer.component';
 
@@ -19,7 +19,7 @@ import { CategorizerComponent } from './categorizer/categorizer.component';
   declarations: [TransactionsComponent, CategorizerComponent],
   exports: [TransactionsComponent],
 
-  //Entry components alerts angular to - in this module - as to what components to use as modals
+  // Entry components alerts angular to - in this module - as to what components to use as modals
   entryComponents: [CategorizerComponent]
 
 })
