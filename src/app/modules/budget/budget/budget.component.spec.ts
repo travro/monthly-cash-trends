@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BudgetComponent } from './budget.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('BudgetComponent', () => {
   let component: BudgetComponent;
@@ -8,9 +9,10 @@ describe('BudgetComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BudgetComponent ]
+      declarations: [BudgetComponent],
+      imports: [HttpClientModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

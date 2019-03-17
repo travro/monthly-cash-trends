@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TransactionsComponent } from './transactions.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material';
 
 describe('TransactionsComponent', () => {
   let component: TransactionsComponent;
@@ -8,7 +10,8 @@ describe('TransactionsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TransactionsComponent ]
+      declarations: [ TransactionsComponent ],
+      imports: [HttpClientModule, MatDialogModule]
     })
     .compileComponents();
   }));
