@@ -23,7 +23,6 @@
       "add nodeamon"
     ]
   },
-  /**********************************************************************************/
   "TOFIX": {
     "Categorizer Menu": [
       "Cancelling an added category POSTs a null parameter. Still an issue?"
