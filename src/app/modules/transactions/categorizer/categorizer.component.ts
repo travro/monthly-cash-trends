@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
-import { DataService } from '../../services/data.service';
-import { Category } from '../../models/category.model';
+import { DataService } from '../../../services/data.service';
+import { Category } from '../../../models/category.model';
 
 
 @Component({

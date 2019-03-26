@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 
-import { Transaction } from '../../models/transaction.model';
+import { Transaction } from '../../../models/transaction.model';
 import { CategorizerComponent } from '../categorizer/categorizer.component';
-import { DataService } from '../../services/data.service';
+import { DataService } from '../../../services/data.service';
 
 
 @Component({

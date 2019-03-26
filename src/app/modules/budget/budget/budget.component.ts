@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Budget } from '../../models/budget.model';
-import { DataService } from '../../services/data.service';
+import { Budget } from '../../../models/budget.model';
+import { DataService } from '../../../services/data.service';
 
 @Component({
   templateUrl: './budget.component.html',
