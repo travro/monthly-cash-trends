@@ -15,10 +15,10 @@ export class CategorizerComponent implements OnInit {
   private categories: Category[];
   private openingCategory: string;
   public selectedCategory: string;
-  public applyAll: boolean = false;
+  public applyAll = false;
 
-  //MatDialogRef contains a dialog reference to the component in the dialog
-  //MAT_DIALOG_DATA holds the data passed in by MatDialogConfig, which was injected in the parent (transactions.component.ts)
+  // MatDialogRef contains a dialog reference to the component in the dialog
+  // MAT_DIALOG_DATA holds the data passed in by MatDialogConfig, which was injected in the parent (transactions.component.ts)
   constructor(
     private dataService: DataService,
     private dialogRef: MatDialogRef<CategorizerComponent>,
@@ -40,7 +40,7 @@ export class CategorizerComponent implements OnInit {
   }
 
   insertNewCategory(): void {
-    let catToAdd = prompt("Insert the name of the new category (Letters only)");
+    const catToAdd = prompt('Insert the name of the new category (Letters only)');
     if (/^[a-zA-Z\s]+$/.test(catToAdd) && catToAdd !== '' && catToAdd !== null) {
       this.dataService
         .insertNewCategory(catToAdd)
@@ -49,26 +49,27 @@ export class CategorizerComponent implements OnInit {
             this.categories.push(newPostedCategory);
           },
           (err) => {
-            if (err) console.log("Categorizer insert error: " + err);
+            if (err) { console.log('Categorizer insert error: ' + err); }
           });
-    }
-    else {
+    } else {
       alert('You must enter a category containing only letters');
     }
   }
-  //TOFIX - category does not remove from template
+  // TOFIX - category does not remove from template
   removeSelectedCategory(): void {
-    let catToRemove: Category = this.categories.find((cat) => cat.category == this.selectedCategory);
+    const catToRemove: Category = this.categories.find((cat) => cat.category === this.selectedCategory);
+    const warning = `Remove the the category: ${this.selectedCategory}?
+    \nWARNING: Any transaction already set to this category will be reset to 'Uncategorized'`;
 
-    if (confirm(`Remove the selected category: ${this.selectedCategory}? \nWARNING: Any transaction already set to this category will be reset to 'Uncategorized'`)) {
+    if (confirm(warning)) {
       this.dataService
         .deleteCategory(catToRemove.id)
         .subscribe(
           (deletedCategory: Category) => {
-            this.categories.splice(this.categories.findIndex((element : Category) => element.id == deletedCategory.id), 1);
+            this.categories.splice(this.categories.findIndex((element: Category) => element.id === deletedCategory.id), 1);
           },
           (err) => {
-            if (err) console.log("Categorizer delete error: " + err);
+            if (err) { console.log('Categorizer delete error: ' + err); }
           });
     }
   }
@@ -80,7 +81,9 @@ export class CategorizerComponent implements OnInit {
   }
 
   closeApplyChanges(): void {
-    if (confirm(`Apply the category ${this.selectedCategory} to ${this.data.dataTransaction.vendor} ${(this.applyAll) ? 'and to all of their transactions?' : '?'}`)) {
+    const warning = `Apply the category ${this.selectedCategory} to ${this.data.dataTransaction.vendor} ${(this.applyAll) ?
+      'and to all of their transactions?' : '?'}`;
+    if (confirm(warning)) {
       this.data.dataTransaction.category = this.selectedCategory;
       this.data.applyAll = this.applyAll;
       this.dialogRef.close(this.data);
