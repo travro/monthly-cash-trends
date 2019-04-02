@@ -1,62 +1,64 @@
-<table class="budget-table">
-  <thead>
-    <tr>
-      <td class="budget-category-column">Category</td>
-      <td>January</td>
-      <td>February</td>
-      <td>March</td>
-      <td>April</td>
-      <td>May</td>
-      <td>June</td>
-      <td>July</td>
-      <td>August</td>
-      <td>September</td>
-      <td>October</td>
-      <td>November</td>
-      <td>December</td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let b of buds">
-      <td>
-        {{b.Category}}
-      </td>
-      <td>
-        <button>{{b.January || 0 | currency:'USD':''}}</button>
-      </td>
-      <td>
-        <button>{{b.February || 0 | currency:'USD':''}}</button>
-      </td>
-      <td>
-        <button>{{b.March || 0 | currency:'USD':''}}</button>
-      </td>
-      <td>
-        <button>{{b.April || 0 | currency:'USD':''}}</button>
-      </td>
-      <td>
-        <button>{{b.May || 0 | currency:'USD':''}}</button>
-      </td>
-      <td>
-        <button>{{b.June || 0 | currency:'USD':''}}</button>
-      </td>
-      <td>
-        <button>{{b.July || 0 | currency:'USD':''}}</button>
-      </td>
-      <td>
-        <button>{{b.August || 0 | currency:'USD':''}}</button>
-      </td>
-      <td>
-        <button>{{b.September || 0 | currency:'USD':''}}</button>
-      </td>
-      <td>
-        <button>{{b.October || 0 | currency:'USD':''}}</button>
-      </td>
-      <td>
-        <button>{{b.November || 0 | currency:'USD':''}}</button>
-      </td>
-      <td>
-        <button>{{b.December || 0 | currency:'USD':''}}</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="main-content-area">
+  <table class="budget-table">
+    <thead>
+      <tr>
+        <td class="budget-category-column">Category</td>
+        <td>January</td>
+        <td>February</td>
+        <td>March</td>
+        <td>April</td>
+        <td>May</td>
+        <td>June</td>
+        <td>July</td>
+        <td>August</td>
+        <td>September</td>
+        <td>October</td>
+        <td>November</td>
+        <td>December</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let b of buds">
+        <td>
+          {{b.Category}}
+        </td>
+        <td>
+          <button class="table-button">{{b.January || 0 | currency:'USD':''}}</button>
+        </td>
+        <td>
+          <button class="table-button">{{b.February || 0 | currency:'USD':''}}</button>
+        </td>
+        <td>
+          <button class="table-button">{{b.March || 0 | currency:'USD':''}}</button>
+        </td>
+        <td>
+          <button class="table-button">{{b.April || 0 | currency:'USD':''}}</button>
+        </td>
+        <td>
+          <button class="table-button">{{b.May || 0 | currency:'USD':''}}</button>
+        </td>
+        <td>
+          <button class="table-button">{{b.June || 0 | currency:'USD':''}}</button>
+        </td>
+        <td>
+          <button class="table-button">{{b.July || 0 | currency:'USD':''}}</button>
+        </td>
+        <td>
+          <button class="table-button">{{b.August || 0 | currency:'USD':''}}</button>
+        </td>
+        <td>
+          <button class="table-button">{{b.September || 0 | currency:'USD':''}}</button>
+        </td>
+        <td>
+          <button class="table-button">{{b.October || 0 | currency:'USD':''}}</button>
+        </td>
+        <td>
+          <button class="table-button">{{b.November || 0 | currency:'USD':''}}</button>
+        </td>
+        <td>
+          <button class="table-button">{{b.December || 0 | currency:'USD':''}}</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,51 +1,60 @@
-table {
+.main-content-area{
   margin: 10px auto;
   width: 90%;
+}
+
+.main-content-area div{
+  margin-bottom: 10px;
+}
+
+.main-content-area table {
+  width: 100%;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   display: table;
-  color: #202020;
-  background-color: whitesmoke;
   border: 1px solid #808080;
   border-collapse: collapse;
 }
 
-table td{
+.main-content-area table td {
   border: 1px solid #808080;
 }
-thead td{
+
+.main-content-area thead td {
   padding: 5px 2px;
   font-weight: 500;
   font-size: 1.0em;
-  color: white;
-  background: #ee4c3a;
-}
-table td button{
-  border: none;
-  padding:8px 5px;
-  color: whitesmoke;
-  height: 100%;
-  min-width: 100%;
-  margin: 0px;
+  color: #fff;
+  background: #c74e30;
 }
 
-tr:nth-of-type(even) button{
-  background: #50bb80d8
+.main-content-area .table-button {
+  height: 100%;
+  min-width: 100%;
+  border: none;
+  padding: 8px 5px;
+  margin: 0px;
+  background: inherit;
 }
-tr:nth-of-type(odd) button{
-  background: #50bb80
+
+.main-content-area .table-button:hover{
+  background: #dda99b;
+  border: none;
+}
+
+
+.main-content-area tr:nth-of-type(even){
+  background: #f2f2f2
 }
 
 @media screen and (max-width: 580px) {
-  .table {
+  .main-content-area .table {
     display: block;
   }
 }
 
-
 @media screen and (max-width: 580px) {
-  .row {
+  .main-content-area .row {
     padding: 15px 0;
     display: block;
   }
 }
-

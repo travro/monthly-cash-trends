@@ -1,0 +1,15 @@
+#pagination-controls{
+  width: 100%;
+  height: 30px;
+  background-color: #50bb80;
+}
+
+#page-number-links{
+  float: left;
+  width: 30%;
+}
+
+#page-amount-select{
+  float: right;
+  width: 30%;
+}

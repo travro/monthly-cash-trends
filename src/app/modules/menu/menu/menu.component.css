@@ -6,7 +6,6 @@ header {
 }
 
 main {
-  /*background-color: rgb(81, 131, 80);*/
   overflow: auto;
   box-sizing: border-box;
 }
