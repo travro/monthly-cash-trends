@@ -8,6 +8,7 @@ import { MatDialogModule} from '@angular/material';
 // Declarations
 import { TransactionsComponent } from './transactions/transactions.component';
 import { CategorizerComponent } from './categorizer/categorizer.component';
+import { PageNumbersDirective } from './directives/page-numbers.directive';
 
 @NgModule({
   imports: [
@@ -16,7 +17,7 @@ import { CategorizerComponent } from './categorizer/categorizer.component';
     MatDialogModule,
     FormsModule
   ],
-  declarations: [TransactionsComponent, CategorizerComponent],
+  declarations: [TransactionsComponent, CategorizerComponent, PageNumbersDirective],
   exports: [TransactionsComponent],
 
   // Entry components alerts angular to - in this module - as to what components to use as modals
